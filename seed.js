@@ -7,22 +7,22 @@ async function main() {
     /* =========================
        CONEXIÓN A BASE DE DATOS
     ========================== */
-    console.log("🔌 Conectando a la base de datos...")
+    console.log("Conectando a la base de datos...")
     await sequelize.authenticate()
-    console.log("✅ Conexión exitosa")
+    console.log("Conexion exitosa")
 
     /* =========================
        CREACIÓN DE TABLAS
     ========================== */
-    console.log("🧱 Creando tablas...")
+    console.log("Creando tablas...")
     await sequelize.sync({ force: true })
-    console.log("✅ Tablas creadas correctamente")
+    console.log("Tablas creadas correctamente")
 
 
     /* =========================
        CREAR USUARIOS
     ========================== */
-    console.log("👤 Creando usuarios...")
+    console.log("Creando usuarios...")
 
     const usuario1 = await Usuario.create({
       nombre: "Ana",
@@ -43,7 +43,7 @@ async function main() {
     /* =========================
        CREAR TABLEROS
     ========================== */
-    console.log("📋 Creando tableros...")
+    console.log("Creando tableros...")
 
     const tablero1 = await usuario1.createTablero({
       nombre: "Proyecto Web",
@@ -57,7 +57,7 @@ async function main() {
 
     const tablero3 = await usuario2.createTablero({
       nombre: "Tareas Personales",
-      descripcion: "Organización personal"
+      descripcion: "Organizacion personal"
     })
 
     console.table([
@@ -70,7 +70,7 @@ async function main() {
     /* =========================
        CREAR LISTAS
     ========================== */
-    console.log("📑 Creando listas...")
+    console.log("Creando listas...")
 
     const lista1 = await tablero1.createLista({
       nombre: "Pendiente"
@@ -94,11 +94,11 @@ async function main() {
     /* =========================
        CREAR TARJETAS
     ========================== */
-    console.log("🃏 Creando tarjetas...")
+    console.log("Creando tarjetas...")
 
     const tarjeta1 = await lista1.createTarjeta({
-      titulo: "Diseñar UI",
-      descripcion: "Crear diseño inicial",
+      titulo: "Disenar UI",
+      descripcion: "Crear diseno inicial",
       estado: "Pendiente"
     })
 
@@ -124,12 +124,12 @@ async function main() {
     /* =========================
        FINALIZACIÓN
     ========================== */
-    console.log("🌱 Base de datos creada y poblada correctamente")
+    console.log("Base de datos creada y poblada correctamente")
 
     await sequelize.close()
 
   } catch (error) {
-    console.error("❌ Error:", error)
+    console.error("Error:", error)
   }
 }
 

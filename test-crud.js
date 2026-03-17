@@ -9,16 +9,16 @@ async function testCRUD() {
        CONEXIÓN
     ========================= */
 
-    console.log("\n🔌 CONECTANDO A LA BASE DE DATOS")
+    console.log("\nCONECTANDO A LA BASE DE DATOS")
     await sequelize.authenticate()
-    console.log("✅ Conexión exitosa")
+    console.log("Conexion exitosa")
 
 
     /* =========================
        CREAR
     ========================= */
 
-    console.log("\n🟢 CREAR TARJETA")
+    console.log("\nCREAR TARJETA")
 
     const primeraLista = await Lista.findOne()
 
@@ -33,7 +33,7 @@ async function testCRUD() {
       listaId: primeraLista.id
     })
 
-    console.log("\n🆕 TARJETA CREADA")
+    console.log("\nTARJETA CREADA")
     console.table([nuevaTarjeta.toJSON()])
 
 
@@ -41,7 +41,7 @@ async function testCRUD() {
        LEER TABLERO CON LISTAS Y TARJETAS
     ========================= */
 
-    console.log("\n📖 LEER TABLERO CON LISTAS Y TARJETAS")
+    console.log("\nLEER TABLERO CON LISTAS Y TARJETAS")
 
     const tablero = await Tablero.findOne({
       include: {
@@ -50,7 +50,7 @@ async function testCRUD() {
       }
     })
 
-    console.log("\n📋 TABLERO")
+    console.log("\nTABLERO")
     console.table([{
       id: tablero.id,
       nombre: tablero.nombre,
@@ -58,7 +58,7 @@ async function testCRUD() {
     }])
 
 
-    console.log("\n📑 LISTAS")
+    console.log("\nLISTAS")
 
     const listas = tablero.Listas.map(lista => ({
       id: lista.id,
@@ -69,7 +69,7 @@ async function testCRUD() {
     console.table(listas)
 
 
-    console.log("\n🃏 TARJETAS")
+    console.log("\nTARJETAS")
 
     const tarjetas = tablero.Listas.flatMap(lista =>
       lista.Tarjetas.map(t => ({
@@ -87,7 +87,7 @@ async function testCRUD() {
        LEER USUARIO CON TABLEROS
     ========================= */
 
-    console.log("\n👤 LEER USUARIO CON SUS TABLEROS")
+    console.log("\nLEER USUARIO CON SUS TABLEROS")
 
     const usuario = await Usuario.findOne({
       include: Tablero
@@ -112,7 +112,7 @@ async function testCRUD() {
        ACTUALIZAR
     ========================= */
 
-    console.log("\n✏️ ACTUALIZAR TARJETA")
+    console.log("\nACTUALIZAR TARJETA")
 
     const tarjetaActualizar = await Tarjeta.findOne()
 
@@ -138,7 +138,7 @@ async function testCRUD() {
       console.log("Antes:")
       console.table([estadoAntes])
 
-      console.log("Después:")
+      console.log("Despues:")
       console.table([estadoDespues])
 
     }
@@ -148,7 +148,7 @@ async function testCRUD() {
        BORRAR
     ========================= */
 
-    console.log("\n🗑️ BORRAR TARJETA")
+    console.log("\nBORRAR TARJETA")
 
     const tarjetaEliminar = await Tarjeta.findOne({
       where: { titulo: "Tarjeta CRUD" }
@@ -165,7 +165,7 @@ async function testCRUD() {
 
     } else {
 
-      console.log("No se encontró tarjeta para eliminar")
+      console.log("No se encontro tarjeta para eliminar")
 
     }
 
@@ -174,11 +174,11 @@ async function testCRUD() {
        FINAL
     ========================= */
 
-    console.log("\n🎯 PRUEBAS CRUD FINALIZADAS")
+    console.log("\nPRUEBAS CRUD FINALIZADAS")
 
   } catch (error) {
 
-    console.error("\n❌ Error en test-crud:", error.message)
+    console.error("\nError en test-crud:", error.message)
 
   } finally {
 
