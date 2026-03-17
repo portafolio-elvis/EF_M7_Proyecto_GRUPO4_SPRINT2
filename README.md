@@ -1,45 +1,86 @@
-## KambanPro
- 
-Dashboard de proyecto con CRUD usando Node.js y Express.
+## KanbanPro
+
+Dashboard de proyecto con CRUD usando Node.js, Express y PostgreSQL.
 
 ## Tecnologías usadas
+
 - Node.js
 - Express
 - Express-handlebars
-- Gsap
+- PostgreSQL
+- Sequelize
+- pg / pg-hstore
+- dotenv
+- GSAP
+- Tailwind CSS
 - Nodemon
-- Tailwindcss
 
 ## Estructura del proyecto
 
-src/
+```
+├── config/
+│   └── sequelize.js
 ├── data/
-│ └── data.json
+│   └── data.json
+├── models/
+│   ├── index.js
+│   ├── Usuario.js
+│   ├── Tablero.js
+│   ├── Lista.js
+│   └── Tarjeta.js
 ├── public/
-│ └── kanban.js
-│ └── style.css
+│   ├── kanban.js
+│   └── style.css
 ├── src/
-│ └──input.css
+│   └── input.css
 ├── views/
-│ └──layouts/
-│    └──main.hbs
-│ └──dashboard.hbs
-│ └──login.hbs
-│ └──register.hbs
+│   ├── layouts/
+│   │   └── main.hbs
+│   ├── dashboard.hbs
+│   ├── login.hbs
+│   └── register.hbs
+├── .env.example
 ├── .gitignore
 ├── app.js
-├── package-lock.json
-├── apackage.json
+├── package.json
 ├── README.md
-├── node_modules
+├── seed.js
 ├── tailwind.config.js
+└── test-crud.js
+```
 
 ## Instalación y ejecución
 
-```Terminal
+1. Instalar dependencias:
+
+```bash
 npm install
+```
+
+2. Crear el archivo `.env` basándose en `.env.example` y completar con las credenciales de PostgreSQL:
+
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_NAME=nombre_base_de_datos
+```
+
+3. Iniciar la aplicación web:
+
+```bash
 npm run dev
+```
+
+4. Crear tablas y poblar la base de datos:
+
+```bash
 npm run seed
+```
+
+5. Ejecutar pruebas CRUD sobre los modelos:
+
+```bash
 npm run test-crud
-
-
+```
